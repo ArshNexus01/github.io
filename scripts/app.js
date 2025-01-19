@@ -6,7 +6,13 @@
     // Function to dynamically inject content into the Home page
     function DisplayHomePage() {
         // Select the <main> element (previously <div class="container">)
-        let MainContent = document.getElementsByTagName("main")[0]; // 'main' is more appropriate for HTML5 semantics
+        let MainContent = document.querySelector("main"); // Use querySelector to select the <main> tag
+
+        // Check if MainContent is found, otherwise log an error
+        if (!MainContent) {
+            console.error("Main content (main) element not found!");
+            return;
+        }
 
         // 1. Create the new paragraph element
         let newParagraph = document.createElement("p");
