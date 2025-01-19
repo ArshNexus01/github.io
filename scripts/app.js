@@ -1,65 +1,72 @@
-
 "use strict";
-// IIFE  , immidieately invoked functional experession
-// its a function which calls itself , we dont need client side code to call , irt calls itself when its lioaded
 
+// IIFE (Immediately Invoked Function Expression)
 (function () {
 
+    // Function to dynamically inject content into the Home page
     function DisplayHomePage() {
-        // attach to the dom
-        MainContent.appendChild(MainParagraph);
+        // Select the <main> element (previously <div class="container">)
+        let MainContent = document.getElementsByTagName("main")[0]; // 'main' is more appropriate for HTML5 semantics
 
-        let FirstString = "This is";
-        let SecondString = ` ${FirstString} is my second paragraph`;
-        MainParagraph.textContent = SecondString;
+        // 1. Create the new paragraph element
+        let newParagraph = document.createElement("p");
 
-        //attach to the dom
-        MainContent.appendChild(MainParagraph);
+        // 2. Configure the new paragraph element (ID and Bootstrap class)
+        newParagraph.id = "dynamicParagraph"; // Assigning an ID
+        newParagraph.classList.add("mt-3"); // Adding Bootstrap margin-top class
 
-        let DocumentBody= document.body;
-        //<article><p></p></article>
-        let Article = document.createElement("article");
-        let Paragraph = `<p`
-        Paragraph.textContent = "This is my first paragraph";
-        Article.appendChild(Paragraph);
-        DocumentBody.appendChild(Article);
+        // 3. Update the paragraph's text content using a template string
+        let FirstString = "Welcome to INFT 2202!";
+        let SecondString = `${FirstString} This content is dynamically injected using JavaScript and template strings.`;
+        newParagraph.textContent = SecondString; // Adding text content to the paragraph
 
+        // 4. Append the new paragraph to the main content
+        MainContent.appendChild(newParagraph);
 
+        // 5. Dynamically create an HTML article element
+        let newArticle = document.createElement("article");
 
+        // Add content to the article using template strings
+        newArticle.innerHTML = `
+            <h2>Dynamic Article Heading</h2>
+            <p>This article was created dynamically using JavaScript and template strings.</p>
+        `;
 
-
+        // Append the article to the main content
+        MainContent.appendChild(newArticle);
     }
 
+    // Function to handle About page (for other pages, similar functions can be added)
     function DisplayAboutPage() {
-        console.log(" Called DisplayAboutPage");
+        console.log("Called DisplayAboutPage");
     }
 
+    // Event listener for the About Us button
     let aboutUsBtn = document.getElementById("AboutUsBtn");
-    aboutUsBtn.addEventListener("click", function () {
-        location.href = "about.html";
-    })
+    if (aboutUsBtn) {
+        aboutUsBtn.addEventListener("click", function () {
+            location.href = "about.html";
+        });
+    }
 
-    let MainContent = document.getElementById("MainContent")[0];
-
-    //<p id="MainParagraph" class="mt-3"> This is my first paragraph</p>
-    let MainParagraph = document.getElementById("MainParagraph");
-
-
+    // Placeholder functions for other pages
     function DisplayProductsPage() {
-        console.log(" Called DisplayProductsPage");
-
+        console.log("Called DisplayProductsPage");
     }
+
     function DisplayServicesPage() {
-        console.log(" Called DisplayServicesPage");
-    }
-    function DisplayContactsPage() {
-        console.log(" Called DisplayContactsPage");
+        console.log("Called DisplayServicesPage");
     }
 
-    function Start () {
+    function DisplayContactsPage() {
+        console.log("Called DisplayContactsPage");
+    }
+
+    // Function to start the app and show the appropriate content based on the document title
+    function Start() {
         console.log("Start App..");
 
-        switch(document.title){
+        switch (document.title) {
             case "Home":
                 DisplayHomePage();
                 break;
@@ -75,11 +82,10 @@
             case "Contact":
                 DisplayContactsPage();
                 break;
-
         }
     }
+
+    // Add event listener to run the Start function when the page is loaded
     window.addEventListener("load", Start);
 
-
-
-}) () // these para make a call for the function
+})();
