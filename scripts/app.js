@@ -23,7 +23,7 @@
 
         // 3. Update the paragraph's text content using a template string
         let FirstString = "Welcome to INFT 2202!";
-        let SecondString = `${FirstString} This content is dynamically injected using JavaScript and template strings.`;
+        let SecondString = `${FirstString} This is my website.`;
         newParagraph.textContent = SecondString; // Adding text content to the paragraph
 
         // 4. Append the new paragraph to the main content
@@ -34,8 +34,8 @@
 
         // Add content to the article using template strings
         newArticle.innerHTML = `
-            <h2>Dynamic Article Heading</h2>
-            <p>This article was created dynamically using JavaScript and template strings.</p>
+            <h2>Hello There ^_^</h2>
+            <p>I am Pavitar Paapi 😎.</p>
         `;
 
         // Append the article to the main content
