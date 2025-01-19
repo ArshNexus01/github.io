@@ -6,7 +6,7 @@
     // Function to dynamically inject content into the Home page
     function DisplayHomePage() {
         // Select the <main> element (previously <div class="container">)
-        let MainContent = document.querySelector("main"); // Use querySelector to select the <main> tag
+        let MainContent = document.querySelector("main");
 
         // Check if MainContent is found, otherwise log an error
         if (!MainContent) {
@@ -18,13 +18,13 @@
         let newParagraph = document.createElement("p");
 
         // 2. Configure the new paragraph element (ID and Bootstrap class)
-        newParagraph.id = "dynamicParagraph"; // Assigning an ID
-        newParagraph.classList.add("mt-3"); // Adding Bootstrap margin-top class
+        newParagraph.id = "dynamicParagraph";
+        newParagraph.classList.add("mt-3");
 
         // 3. Update the paragraph's text content using a template string
         let FirstString = "Welcome to INFT 2202!";
         let SecondString = `${FirstString} This is my website.`;
-        newParagraph.textContent = SecondString; // Adding text content to the paragraph
+        newParagraph.textContent = SecondString;
 
         // 4. Append the new paragraph to the main content
         MainContent.appendChild(newParagraph);
